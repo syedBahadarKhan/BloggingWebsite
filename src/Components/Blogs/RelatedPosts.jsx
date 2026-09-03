@@ -1,5 +1,5 @@
 import PostCard from "./PostCard";
-import { GridSkeleton } from "../ui/Skeleton";
+import { GridSkeleton } from "../UI/Skeleton";
 
 export default function RelatedPosts({ posts, loading }) {
   if (loading) return <GridSkeleton count={3} />;

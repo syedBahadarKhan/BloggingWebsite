@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import OptimizedImage from "../ui/OptimizedImage";
+import OptimizedImage from "../UI/OptimizedImage";
 
 /**
  * Renders whatever entry type was embedded inline in a rich text body.
@@ -19,8 +19,8 @@ export default function EmbeddedEntryCard({ entry }) {
   }
 
   if (contentType === "blogPost") {
-    const { title, slug, excerpt, coverImage } = entry.fields;
-    const imageUrl = coverImage?.fields?.file?.url;
+    const { title, slug, description, blogImage } = entry.fields;
+    const imageUrl = blogImage?.[0]?.fields?.file?.url;
     return (
       <Link
         to={`/blog/${slug}`}
@@ -35,7 +35,7 @@ export default function EmbeddedEntryCard({ entry }) {
         <div>
           <p className="text-xs text-blue-600 font-medium mb-1">Related Article</p>
           <p className="font-semibold text-gray-900">{title}</p>
-          {excerpt && <p className="text-sm text-gray-500 line-clamp-1">{excerpt}</p>}
+          {description && <p className="text-sm text-gray-500 line-clamp-1">{description}</p>}
         </div>
       </Link>
     );

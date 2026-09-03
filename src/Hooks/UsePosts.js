@@ -1,5 +1,5 @@
-import { getAllPosts } from "../api/contentful";
-import { useAsync } from "./useAsync";
+import { getAllPosts } from "../api/contenFul";
+import { useAsync } from "./UseAsync";
 
 export function usePosts() {
   return useAsync(getAllPosts, []);

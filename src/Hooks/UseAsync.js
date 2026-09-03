@@ -13,7 +13,11 @@ export function useAsync(asyncFn, deps = []) {
 
   useEffect(() => {
     let cancelled = false;
-    setState((prev) => ({ ...prev, loading: true, error: null }));
+    queueMicrotask(() => {
+      if (!cancelled) {
+        setState((prev) => ({ ...prev, loading: true, error: null }));
+      }
+    });
 
     asyncFn()
       .then((data) => {

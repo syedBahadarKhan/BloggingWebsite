@@ -1,5 +1,5 @@
-import { getRelatedPosts } from "../api/contentful";
-import { useAsync } from "./useAsync";
+import { getRelatedPosts } from "../api/contenFul";
+import { useAsync } from "./UseAsync";
 
 export function useRelatedPosts(categoryId, excludeSlug) {
   return useAsync(() => {

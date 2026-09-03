@@ -1,4 +1,4 @@
-import OptimizedImage from "../ui/OptimizedImage";
+import OptimizedImage from "../UI/OptimizedImage";
 
 export default function AuthorCard({ author, compact = false }) {
   if (!author?.fields) return null;

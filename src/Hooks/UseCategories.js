@@ -1,5 +1,5 @@
-import { getAllCategories } from "../api/contentful";
-import { useAsync } from "./useAsync";
+import { getAllCategories } from "../api/contenFul";
+import { useAsync } from "./UseAsync";
 
 export function useCategories() {
   return useAsync(getAllCategories, []);
