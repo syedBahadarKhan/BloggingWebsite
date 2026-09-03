@@ -1,7 +1,6 @@
 import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
-import OptimizedImage from "../ui/OptimizedImage";
-import CodeBlock from "./CodeBlock";
-import EmbeddedEntryCard from "./EmbeddedEntryCard";
+import OptimizedImage from "../UI/OptimizedImage";
+import EmbeddedEntryCard from "./EmbeddedEnteryCard";
 
 /**
  * Full renderOptions object covering every node type the assignment asks
@@ -130,4 +129,3 @@ export const richTextRenderOptions = {
   },
 };
 
-export { CodeBlock };

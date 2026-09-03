@@ -1,7 +1,7 @@
 import PostCard from "./PostCard";
-import { GridSkeleton } from "../ui/Skeleton";
-import ErrorState from "../ui/ErrorState";
-import EmptyState from "../ui/EmptyState";
+import { GridSkeleton } from "../UI/Skeleton";
+import ErrorState from "../UI/ErrorState";
+import EmptyState from "../UI/EmptyState";
 
 export default function PostGrid({ posts, loading, error, emptyMessage }) {
   if (loading) return <GridSkeleton />;

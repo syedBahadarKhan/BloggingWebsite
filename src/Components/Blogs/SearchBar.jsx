@@ -7,7 +7,8 @@ export default function SearchBar({ value, onChange, placeholder = "Search posts
   const [localValue, setLocalValue] = useState(value);
 
   useEffect(() => {
-    setLocalValue(value);
+    const timeout = setTimeout(() => setLocalValue(value), 0);
+    return () => clearTimeout(timeout);
   }, [value]);
 
   useEffect(() => {

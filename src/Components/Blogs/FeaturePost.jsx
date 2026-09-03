@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
-import OptimizedImage from "../ui/OptimizedImage";
-import CategoryBadge from "./CategoryBadge";
-import { formatDate } from "../../utils/formatDate";
-import Button from "../ui/Button";
+import OptimizedImage from "../UI/OptimizedImage";
+import CategoryBadge from "../Blogs/categorybadge";
+import { formatDate } from "../../Utils/foramteDate";
+import Button from "../UI/Button";
 
 export default function FeaturedPost({ post }) {
   if (!post?.fields) return null;
 
-  const { title, slug, excerpt, coverImage, category, publishedDate, readingTime } =
+  const { title, slug, description, blogImage, categories, publishDate, readingTime } =
     post.fields;
-  const imageUrl = coverImage?.fields?.file?.url;
+  const category = categories ? { fields: { title: categories, slug: categories.toLowerCase().replace(/\s+/g, "-") } } : null;
+  const imageUrl = blogImage?.[0]?.fields?.file?.url;
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -32,9 +33,9 @@ export default function FeaturedPost({ post }) {
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
           {title}
         </h1>
-        {excerpt && <p className="text-gray-600 text-lg leading-relaxed">{excerpt}</p>}
+        {description && <p className="text-gray-600 text-lg leading-relaxed">{description}</p>}
         <div className="flex items-center gap-2 text-sm text-gray-400">
-          <span>{formatDate(publishedDate)}</span>
+          <span>{formatDate(publishDate)}</span>
           {readingTime && (
             <>
               <span>•</span>

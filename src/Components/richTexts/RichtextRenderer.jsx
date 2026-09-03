@@ -1,5 +1,5 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { richTextRenderOptions } from "./renderOptions";
+import { richTextRenderOptions } from "./renderOption";
 
 /**
  * Renders a Contentful Rich Text `Document` field using the official

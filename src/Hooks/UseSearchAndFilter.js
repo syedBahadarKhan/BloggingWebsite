@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
-import { getFilteredPosts } from "../api/contentful";
-import { useAsync } from "./useAsync";
+import { getFilteredPosts } from "../api/contenFul";
+import { useAsync } from "./UseAsync";
 
 /**
  * Drives the BlogListing page. Search term and category are stored in the

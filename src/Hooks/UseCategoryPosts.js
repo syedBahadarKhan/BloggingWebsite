@@ -1,5 +1,5 @@
-import { getCategoryBySlug, getPostsByCategorySlug } from "../api/contentful";
-import { useAsync } from "./useAsync";
+import { getCategoryBySlug, getPostsByCategorySlug } from "../api/contenFul";
+import { useAsync } from "./UseAsync";
 
 /**
  * Returns { category, posts } together for the CategoryPage.
