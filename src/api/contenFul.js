@@ -137,7 +137,7 @@ export const getFilteredPosts = async ({ searchTerm, categorySlug } = {}) => {
   if (categorySlug) {
     const category = await getCategoryBySlug(categorySlug);
     if (category) {
-      query["fields.Categories[match]"] = category.fields.title;
+      query["fields.categories[match]"] = category.fields.title;
     }
   }
 

@@ -1,4 +1,15 @@
-# React + Vite
+# The Blog
+
+## Vercel deployment
+
+1. Import this repository into Vercel. Vercel detects the Vite build automatically.
+2. Add these Environment Variables in the Vercel project settings for the Production environment:
+	- `VITE_CONTENTFUL_SPACE_ID`
+	- `VITE_CONTENTFUL_ACCESS_TOKEN`
+	- `VITE_CONTENTFUL_ENVIRONMENT` (use `master` unless a different Contentful environment is required)
+3. Deploy. The included `vercel.json` keeps React Router routes working when opened or refreshed directly.
+
+For local development, copy `.env.example` to `.env` and replace the placeholder values with the Contentful Delivery API values.
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
