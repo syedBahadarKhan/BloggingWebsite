@@ -53,9 +53,12 @@ export const getPostBySlug = async (slug) => {
  * Fetch all posts whose category text matches a category slug.
  */
 export const getPostsByCategorySlug = async (categorySlug) => {
+  const category = await getCategoryBySlug(categorySlug);
+  if (!category) return [];
+
   const res = await client.getEntries({
     content_type: "bahadarBlogs",
-    "fields.categories[match]": categorySlug,
+    "fields.categories[match]": category.fields.title,
     order: "-fields.publishDate",
     include: 2,
   });
@@ -132,7 +135,10 @@ export const getFilteredPosts = async ({ searchTerm, categorySlug } = {}) => {
     query["fields.title[match]"] = searchTerm;
   }
   if (categorySlug) {
-    query["fields.categories[match]"] = categorySlug;
+    const category = await getCategoryBySlug(categorySlug);
+    if (category) {
+      query["fields.Categories[match]"] = category.fields.title;
+    }
   }
 
   const res = await client.getEntries(query);

@@ -1,10 +1,13 @@
 import OptimizedImage from "../UI/OptimizedImage";
 
-export default function AuthorCard({ author, compact = false }) {
-  if (!author?.fields) return null;
-
-  const { name, avatar, bio, role } = author.fields;
+export default function AuthorCard({ author, authorName, authorImage, compact = false }) {
+  const fields = author?.fields || {};
+  const name = authorName || fields.name || fields.authorName || fields.AuthorName;
+  const avatar = authorImage || fields.avatar || fields.authorImage || fields.AuthorImage;
+  const { bio, role } = fields;
   const avatarUrl = avatar?.fields?.file?.url;
+
+  if (!name && !avatarUrl) return null;
 
   if (compact) {
     return (

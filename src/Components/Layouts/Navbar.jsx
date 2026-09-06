@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import MobileMenu from "./MobileMenu";
+import { useCategories } from "../../Hooks/UseCategories";
 
 const links = [
   { to: "/", label: "Home" },
@@ -9,6 +10,12 @@ const links = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { data: categories } = useCategories();
+  const categoryLinks = (categories || []).map((category) => ({
+    to: `/category/${category.fields.slug}`,
+    label: category.fields.title,
+  }));
+  const allLinks = [...links, ...categoryLinks];
 
   return (
     <header className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-gray-100">
@@ -19,7 +26,7 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-6">
-          {links.map((link) => (
+          {allLinks.map((link) => (
             <NavLink
               key={link.to}
               to={link.to}
@@ -48,7 +55,7 @@ export default function Navbar() {
         </button>
       </nav>
 
-      <MobileMenu open={menuOpen} links={links} onClose={() => setMenuOpen(false)} />
+      <MobileMenu open={menuOpen} links={allLinks} onClose={() => setMenuOpen(false)} />
     </header>
   );
 }
