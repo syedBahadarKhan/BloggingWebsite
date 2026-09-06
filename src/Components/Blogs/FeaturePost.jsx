@@ -3,11 +3,24 @@ import OptimizedImage from "../UI/OptimizedImage";
 import CategoryBadge from "../Blogs/categorybadge";
 import { formatDate } from "../../Utils/foramteDate";
 import Button from "../UI/Button";
+import AuthorCard from "./AuthorCard";
 
 export default function FeaturedPost({ post }) {
   if (!post?.fields) return null;
 
-  const { title, slug, description, blogImage, categories, publishDate, readingTime } =
+  const {
+    title,
+    slug,
+    description,
+    blogImage,
+    categories,
+    publishDate,
+    readingTime,
+    authorName,
+    AuthorName,
+    authorImage,
+    AuthorImage,
+  } =
     post.fields;
   const category = categories ? { fields: { title: categories, slug: categories.toLowerCase().replace(/\s+/g, "-") } } : null;
   const imageUrl = blogImage?.[0]?.fields?.file?.url;
@@ -34,6 +47,11 @@ export default function FeaturedPost({ post }) {
           {title}
         </h1>
         {description && <p className="text-gray-600 text-lg leading-relaxed">{description}</p>}
+        <AuthorCard
+          authorName={authorName || AuthorName}
+          authorImage={authorImage || AuthorImage}
+          compact
+        />
         <div className="flex items-center gap-2 text-sm text-gray-400">
           <span>{formatDate(publishDate)}</span>
           {readingTime && (

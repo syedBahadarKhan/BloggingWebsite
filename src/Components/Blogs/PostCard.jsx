@@ -1,12 +1,25 @@
 import { Link } from "react-router-dom";
 import OptimizedImage from "../UI/OptimizedImage";
 import CategoryBadge from "./categorybadge";
+import AuthorCard from "./AuthorCard";
 import { formatDate } from "../../Utils/foramteDate";
 
 export default function PostCard({ post }) {
   if (!post?.fields) return null;
 
-  const { title, slug, description, blogImage, categories, publishDate, readingTime } =
+  const {
+    title,
+    slug,
+    description,
+    blogImage,
+    categories,
+    publishDate,
+    readingTime,
+    authorName,
+    AuthorName,
+    authorImage,
+    AuthorImage,
+  } =
     post.fields;
   const category = categories ? { fields: { title: categories, slug: categories.toLowerCase().replace(/\s+/g, "-") } } : null;
   const imageUrl = blogImage?.[0]?.fields?.file?.url;
@@ -34,6 +47,11 @@ export default function PostCard({ post }) {
         {description && (
           <p className="text-sm text-gray-500 line-clamp-2 flex-1">{description}</p>
         )}
+        <AuthorCard
+          authorName={authorName || AuthorName}
+          authorImage={authorImage || AuthorImage}
+          compact
+        />
         <div className="flex items-center gap-2 text-xs text-gray-400 mt-1">
           <span>{formatDate(publishDate)}</span>
           {readingTime && (

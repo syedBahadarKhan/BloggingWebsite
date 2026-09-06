@@ -32,6 +32,10 @@ export default function BlogPost() {
     blogImage,
     body,
     author,
+    authorName,
+    AuthorName,
+    authorImage,
+    AuthorImage,
     categories,
     publishDate,
     readingTime,
@@ -60,7 +64,12 @@ export default function BlogPost() {
       {description && <p className="text-gray-500 text-lg mt-3">{description}</p>}
 
       <div className="flex items-center justify-between flex-wrap gap-4 mt-6 mb-8">
-        <AuthorCard author={author} compact />
+        <AuthorCard
+          author={author}
+          authorName={authorName || AuthorName}
+          authorImage={authorImage || AuthorImage}
+          compact
+        />
         <div className="text-sm text-gray-400">
           <span>{formatDate(publishDate)}</span>
           {readingTime && <span> • {readingTime} min read</span>}
@@ -82,7 +91,11 @@ export default function BlogPost() {
       <RichTextRenderer document={body} />
 
       <div className="mt-10 pt-6 border-t border-gray-100">
-        <AuthorCard author={author} />
+        <AuthorCard
+          author={author}
+          authorName={authorName || AuthorName}
+          authorImage={authorImage || AuthorImage}
+        />
       </div>
 
       <RelatedPosts posts={relatedPosts} loading={relatedLoading} />
