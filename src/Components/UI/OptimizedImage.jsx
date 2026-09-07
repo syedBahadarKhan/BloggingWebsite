@@ -1,4 +1,4 @@
-import { buildSrcSet, optimizeImage } from "../../utils/imageOptimizer";
+import { buildSrcSet, optimizeImage } from "../../Utils/imageOptimizer";
 
 /**
  * Drop-in replacement for <img> that:
